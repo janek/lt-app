@@ -24,7 +24,6 @@ interface Props {
   lesson: number,
   setBottomSheetOpen: (val: boolean) => any;
   skipBack: () => any;
-  testFunction: () => any;
   seekTo: (pos: number) => any;
   toggle: () => any;
 }
@@ -32,7 +31,7 @@ interface Props {
 const smallIconSize = 0.175 * Dimensions.get('screen').width;
 const largeIconSize = 0.4 * Dimensions.get('screen').width;
 
-const ListenBody = ({course, lesson, setBottomSheetOpen, skipBack, seekTo, toggle, testFunction}: Props) => {
+const ListenBody = ({course, lesson, setBottomSheetOpen, skipBack, seekTo, toggle}: Props) => {
   const playbackState = usePlaybackState();
   const ready = playbackState === State.Ready;
   const playing = playbackState === State.Playing;
@@ -68,18 +67,6 @@ const ListenBody = ({course, lesson, setBottomSheetOpen, skipBack, seekTo, toggl
           </Text>
         </View>
 
-        <TouchableNativeFeedback
-          // @ts-ignore
-          background={TouchableNativeFeedback.Ripple(null, true)}
-          onPress={testFunction}>
-          <Icon
-            name="experiment"
-            type="material"
-            accessibilityLabel="test" // XXX
-            size={smallIconSize}
-            color={CourseData.getCourseUIColors(course).text}
-          />
-        </TouchableNativeFeedback>
         <View style={styles.icons}>
           <TouchableNativeFeedback
             // @ts-ignore

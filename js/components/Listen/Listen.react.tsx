@@ -117,10 +117,6 @@ const Listen = (props: any) => {
     TrackPlayer.seekTo(Math.max(0, await TrackPlayer.getPosition() - 10));
   };
 
-  const testFunction = () => {
-    console.log('test function');
-  }
-
   return (
     <>
       <ListenHeader course={course} />
@@ -128,7 +124,6 @@ const Listen = (props: any) => {
         course={course}
         lesson={lesson}
         setBottomSheetOpen={setBottomSheetOpen}
-        testFunction={testFunction}
         toggle={toggle}
         skipBack={skipBack}
         seekTo={seekTo}
