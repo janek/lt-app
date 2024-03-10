@@ -14,6 +14,7 @@ import {genStopPlaying, genEnqueueFile} from '../../audio-service';
 import {genProgressForLesson} from '../../persistence';
 import {log} from '../../metrics';
 import {useSetStatusBarStyle} from '../../hooks/useStatusBarStyle';
+import {request, PERMISSIONS} from 'react-native-permissions';
 
 const Listen = (props: any) => {
   const {course, lesson} = props.route.params;
@@ -57,6 +58,14 @@ const Listen = (props: any) => {
       }
 
       playLesson();
+
+      request(PERMISSIONS.IOS.MICROPHONE).then((result) => {
+        console.log('MICROPHONE', result);
+      });
+
+      request(PERMISSIONS.ANDROID.RECORD_AUDIO).then((result) => {
+        console.log('RECORD_AUDIO', result);
+      });
 
       // stop playing when leaving this screen
       return () => {
